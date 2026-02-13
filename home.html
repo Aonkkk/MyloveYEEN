@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ของขวัญวาเลนไทน์ 💖</title>
+  
+  
+  <link rel="stylesheet" href="home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Itim&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+  
+
+  <h1>Happy Valentine’s Day, My Love 💌🌹</h1>
+  <p> You are my Valentine💗</p>
+
+  <div class="video-row">
+  <!-- ซ้าย -->
+  <video class="side-video" autoplay muted loop playsinline>
+    <source src="mylove.mp4" type="video/mp4">
+  </video>
+
+  <!-- กลาง -->
+  <video class="v-video" controls playsinline preload="metadata">
+    <source src="MIXLOEV.mp4" type="video/mp4">
+  </video>
+
+  <!-- ขวา -->
+  <video class="side-video" autoplay muted loop playsinline>
+    <source src="mylove.mp4" type="video/mp4">
+  </video>
+</div>
+
+
+
+<style>
+.v-video {
+  width: 100%;
+  max-height: 90vh;       /* ไม่สูงเกินจอ */
+  aspect-ratio: 9 / 16;  /* แนวตั้ง */
+  object-fit: contain;   /* แสดงครบ ไม่โดนครอป */
+  background: #000;      /* ขอบดำสวย ๆ */
+}
+</style>
+
+<p>Yeen, you make ordinary days feel special. 💗</p>
+
+ <div class="slider">
+  <div class="card active">
+    <img src="1.jpg">
+  </div>
+  <div class="card">
+    <img src="2.jpg">
+  </div>
+  <div class="card">
+    <img src="3.jpg">
+  </div>
+  <div class="card">
+    <img src="4.jpg">
+  </div>
+   <div class="card">
+    <img src="5.jpg">
+  </div>
+   <div class="card">
+    <img src="6.jpg">
+  </div>
+   <div class="card">
+    <img src="7.jpg">
+  </div>
+ <div class="card">
+    <img src="8.jpg">
+  </div>
+</div>
+<div class="dots"></div>
+
+<div class="controls">
+  <button onclick="prev()">◀</button>
+  <button onclick="next()">▶</button>
+</div>
+
+  <!-- ✅ JS ต้องอยู่ตรงนี้ -->
+  <script src="script.js"></script>
+
+  <div class="bg-hearts"></div>
+
+
+
+<!-- ✉️ ซอง -->
+<div class="envelope-wrap">
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+  </div>
+  <p class="hint">แตะเพื่อเปิด 💌</p>
+</div>
+
+
+<!-- 🌫 popup -->
+<div class="overlay" id="overlay">
+  <div class="paper-popup" id="paperPopup">
+    <p id="paperText"></p>
+  </div>
+  <button class="close-btn" id="closeEnvelope">✕</button>
+</div>
+
+
+</body>
+</html>

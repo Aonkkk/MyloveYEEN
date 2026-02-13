@@ -1,0 +1,437 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #ffb6d5, #d6c1ff, #fff0f5);
+  background-size: 400% 400%;
+  animation: bgMove 12s ease infinite;
+  overflow-x: hidden;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.video-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 20px;
+}
+
+/* วิดีโอข้าง */
+.side-video {
+  width: 22vw;
+  max-width: 260px;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  opacity: 0.35;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,.25);
+}
+
+/* วิดีโอกลาง */
+.v-video {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  border-radius: 26px;
+  background: #000;
+  box-shadow: 0 25px 50px rgba(0,0,0,.4);
+  z-index: 2;
+}
+
+/* ===== iPad ===== */
+@media (max-width: 1024px) {
+  .side-video {
+    width: 18vw;
+  }
+}
+
+/* ===== มือถือ ===== */
+@media (max-width: 768px) {
+  .video-row {
+    flex-direction: column;
+  }
+
+  .side-video {
+    display: none; /* มือถือให้เหลือแค่อันกลาง */
+  }
+
+  .v-video {
+    max-width: 92%;
+  }
+}
+
+
+
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 380px; /* ให้การ์ดหายใจ */
+  margin: 8px auto 12px;
+  overflow: visible;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 260px;
+  height: 340px;
+  transform: translateX(-50%) scale(0.85);
+  opacity: 0;
+  border-radius: 25px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+
+  transition: transform 0.7s ease, opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.card.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  z-index: 3;
+}
+
+.card.prev {
+  opacity: 0.5;
+  transform: translateX(-140%) scale(0.9);
+  z-index: 2;
+}
+
+.card.next {
+  opacity: 0.5;
+  transform: translateX(40%) scale(0.9);
+  z-index: 2;
+}
+
+.card.far-prev,
+.card.far-next {
+  opacity: 0.2;
+  transform: scale(0.75);
+  z-index: 1;
+}
+
+
+.controls button {
+  font-size: 22px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+.controls button:active {
+  transform: scale(0.85);
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+}
+
+.controls button.clicked {
+  animation: pulse .3s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+
+.bg-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 22px;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(255,105,180,.7));
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(.8);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  to {
+    transform: translateY(-120vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* ให้เนื้อหาอยู่เหนือหัวใจ */
+body > *:not(.bg-hearts) {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.card {
+  pointer-events: none;
+}
+
+.card.active {
+  pointer-events: auto;
+}
+
+
+.dot.active {
+  background: #ff7abf;
+  transform: scale(1.4);
+}
+
+@media (max-width: 480px) {
+  .slider {
+    height: 360px;
+  }
+
+  .card {
+    width: 230px;
+    height: 300px;
+  }
+}
+
+
+.dot:hover {
+  transform: scale(1.2);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto 10px;
+  z-index: 5;
+  position: relative;
+}
+
+
+/* ================== ✉️ ซอง ================== */
+.envelope-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px 0;
+}
+
+.envelope {
+  position: relative;
+  width: 260px;
+  height: 180px;
+  background: #ffb6c1;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background: #ff8fab;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.8s ease;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.hint {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ================== ✉️ ซอง ================== */
+.envelope-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px 0;
+}
+
+.envelope {
+  position: relative;
+  width: 260px;
+  height: 180px;
+  background: #ffb6c1;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background: #ff8fab;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.8s ease;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.hint {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ================== 🌫 Overlay ================== */
+.overlay {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999999;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* ================== 📄 Popup ================== */
+.paper-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(90vw, 540px);
+  min-height: 280px;
+
+  background: #fff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.35);
+
+  transform: translate(-50%, -50%) scale(.7);
+  opacity: 0;
+}
+
+/* ตอนแสดง */
+.overlay.show .paper-popup {
+  animation: pop .45s cubic-bezier(.22,1.2,.36,1) forwards;
+}
+
+@keyframes pop {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.paper-popup {
+  font-family: "Itim", "Sarabun", sans-serif;
+}
+
+.paper-popup p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #444;
+  letter-spacing: 0.2px;
+}
+
+.txt-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ff5fa2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.txt-heart {
+  color: #ff7abf;
+  font-weight: 500;
+}
+
+.txt-end {
+  display: block;
+  margin-top: 22px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #b45cff;
+  text-align: right;
+}
+
+.paper-popup p + p {
+  margin-top: 14px;
+}
+
+h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  color: #ff5fa2;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 12px rgba(255, 95, 162, 0.35);
+}
+
+p {
+  font-family: "Itim", cursive;
+  font-size: 1.2rem;
+  color: #6b4eff;
+  opacity: 0.9;
+}

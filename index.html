@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>พื้นที่ลับของเรา 💌</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Itim&display=swap" rel="stylesheet">
+    
+  
+</head>
+
+<body>
+  <div class="numpad-wrap">
+  <div class="keys">
+    <button onclick="addNum(1)">1</button>
+    <button onclick="addNum(2)">2</button>
+    <button onclick="addNum(3)">3</button>
+
+    <button onclick="addNum(4)">4</button>
+    <button onclick="addNum(5)">5</button>
+    <button onclick="addNum(6)">6</button>
+
+    <button onclick="addNum(7)">7</button>
+    <button onclick="addNum(8)">8</button>
+    <button onclick="addNum(9)">9</button>
+
+    <button onclick="delNum()">⌫</button>
+    <button onclick="addNum(0)">0</button>
+    <button onclick="checkPass()">✔</button>
+    
+  </div>
+</div>
+
+  <script src="login.js"></script>
+
+<div class="login-box">
+  <h1 class="love-title"> สวัสดีครับ เจ้าแก้ม 💌</h1>
+
+  <input type="password" id="pass" placeholder="รหัสลับของเรา 💕">
+
+  <p class="hint">💡 คำใบ้ : เป็นเลข 6 ตัวแหนะ</p>
+
+  <button onclick="checkPass()">Log in 💌</button>
+</div>
+
+  
+<div class="error-popup" id="errorPopup">
+  <div class="error-box">
+    <p>“อ่าวว แบบนี้เค้าเสียใจเลยนะ 😢 ลองคิดดีๆ อีกทีสิ”</p>
+    <button onclick="closeError()">โอเค หึ 🥺</button>
+  </div>
+</div>
+
+<audio id="bgMusic" autoplay loop>
+  <source src="ตลอดการ.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.25; // เบา ๆ (0.0 - 1.0)
+</script>
+
+<script src="index.js"></script>
+
+</body>
+
+</html>
