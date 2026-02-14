@@ -215,3 +215,35 @@ body {
   cursor: pointer;
 }
 
+/* 📱 มือถือ */
+@media (max-width: 768px) {
+
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 40px;
+    height: auto;
+  }
+
+  .login-box {
+    margin-bottom: 260px; /* เผื่อที่ให้นัมแพด */
+  }
+
+  .numpad-wrap {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    top: auto;
+    right: auto;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 360px;
+    z-index: 9999;
+  }
+
+  .keys button {
+    font-size: 20px;
+    padding: 16px;
+  }
+}
+
